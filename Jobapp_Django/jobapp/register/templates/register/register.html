@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+    <link rel="stylesheet" type= "text/css" href="{% static 'register/style.css' %}" >
+</head>
+<body>
+    {% comment %} render automaitcally {% endcomment %}
+    <h1>Register Form</h1>
+    <img src="{% static 'register/email-icon.png' %}" width="10%" height="10%" alt="Register Email" />
+      <form method="post">
+       {% csrf_token %}
+        {{form.as_p}}
+       {% comment %} {% for field in form  %}
+       <div class="Register_field">
+        {{field.errors}}
+        <label for="{{field.id_for_label}}">{{field.label}}</label>
+        {{field}}
+       </div>
+
+       {% endfor %} {% endcomment %}
+       <input type="submit" value="Submit"> 
+       <button onclick="showRegister()">Check Inf</button>
+
+
+
+
+        {% comment %} {{form.as_p}}
+        {% comment %} -> render manually {% endcomment %}
+        {% comment %} <div class="Register_field">
+            {{ form.first_name.errors }}
+             <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label}}</label>
+             {{form.first_name}} 
+             
+        </div>
+        <div class="Register_field">
+            {{ form.last_name.errors }}
+             <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label}}</label>
+             {{form.last_name}} 
+             
+        </div>
+        <div class="Register_field">
+            {{ form.email.errors }}
+             <label for="{{ form.email.id_for_label }}">{{ form.email.label}}</label>
+             {{form.email}} 
+             
+        </div>
+        <div class="Register_field">
+            {{ form.update_f_name.errors }}
+             <label for="{{ form.update_f_name.id_for_label }}">{{ form.update_f_name.label}}</label>
+             {{form.update_f_name}} 
+
+        </div>
+        <div class="Register_field">
+            {{ form.update_l_name.errors }}
+             <label for="{{ form.update_l_name.id_for_label }}">{{ form.update_l_name.label}}</label>
+             {{form.update_l_name}} 
+             
+        </div> 
+        <input type="submit" value="Submit"> {% endcomment %}
+
+
+
+
+
+
+{% comment %} render nomally {% endcomment %}
+         {% comment %} {% csrf_token %}
+        {% if mail %} 
+            <p>{{mail}}</p>
+        {% endif %}
+        <label for="f_name">First Name</label>
+        <input type="text" id="f_name" name="f_name" placeholder="Your First Name" required>  
+        
+         <br>
+        <label for="l_name">Last Name</label>
+        <input type="text" id="l_name" name="l_name" placeholder="Your Last Name" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" >
+        <br>
+        <label for="update_f_name">Update first name</label>
+        <input type="text" id="update_f_name" name="update_f_name" placeholder="Update your first name" required >
+        <br>
+        <label for="update_l_name">Update last name</label>
+        <input type="text" id="update_l_name" name="update_l_name" placeholder="Update your last name"  required>
+        <br>
+        
+        <input type="submit" value="Submit">  {% endcomment %}
+    
+      </form>
+    <script src="{% static 'register/main.js' %}">
+      
+    </script>
+</body>
+</html>

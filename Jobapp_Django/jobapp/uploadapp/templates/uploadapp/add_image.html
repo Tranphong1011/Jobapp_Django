@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" >
+     {% csrf_token %}   
+    {{form.as_p}} 
+    <button type="submit">Upload</button>
+
+    {% if saved_object %}
+    <h1>upload successfully:  </h1>
+    <h2>Image DIR: {{saved_object.image.url}} </h2> 
+    <h2>Description: {{saved_object.description}} </h2>
+    <img src="{{saved_object.image.url}}" alt="image loading"> 
+    
+
+    {% endif %} 
+</body>
+</html>
